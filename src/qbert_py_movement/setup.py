@@ -23,6 +23,7 @@ setup(
             'talker = qbert_py_movement.publisher_member_function:main',
             'listener = qbert_py_movement.subscriber_member_function:main',
             'wanderer = qbert_py_movement.wanderer:main',
+            'reactor = qbert_py_movement.reactor:main',
         ],
     },
 )

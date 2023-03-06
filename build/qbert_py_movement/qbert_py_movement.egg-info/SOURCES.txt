@@ -10,6 +10,7 @@ setup.py
 ../../build/qbert_py_movement/qbert_py_movement.egg-info/zip-safe
 qbert_py_movement/__init__.py
 qbert_py_movement/publisher_member_function.py
+qbert_py_movement/reactor.py
 qbert_py_movement/subscriber_member_function.py
 qbert_py_movement/wanderer.py
 resource/qbert_py_movement
