@@ -1,0 +1,7 @@
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+  File "/home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/wanderer.py", line 61
+    self.back_timer = self.create_timer(timer_period=.1, self.back_callback)
+                                                                           ^
+SyntaxError: positional argument follows keyword argument
+
