@@ -28,7 +28,7 @@ class Reactor(Node):
         vals = [x.value for x in ir.readings]
         vals = enumerate(vals)
         threats = list(filter(lambda x : x[1] > 150, vals))
-        if len(threats) > 0:
+            if len(threats) > 0:
             threat_direction = list(functools.reduce(lambda a,b : a if a[1] > b[1] else b, threats))
             #print(threat_direction)
             turn = Twist()
