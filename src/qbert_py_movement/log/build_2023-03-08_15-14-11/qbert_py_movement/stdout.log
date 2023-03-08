@@ -1,0 +1,47 @@
+running egg_info
+creating build/qbert_py_movement/qbert_py_movement.egg-info
+writing build/qbert_py_movement/qbert_py_movement.egg-info/PKG-INFO
+writing dependency_links to build/qbert_py_movement/qbert_py_movement.egg-info/dependency_links.txt
+writing entry points to build/qbert_py_movement/qbert_py_movement.egg-info/entry_points.txt
+writing requirements to build/qbert_py_movement/qbert_py_movement.egg-info/requires.txt
+writing top-level names to build/qbert_py_movement/qbert_py_movement.egg-info/top_level.txt
+writing manifest file 'build/qbert_py_movement/qbert_py_movement.egg-info/SOURCES.txt'
+reading manifest file 'build/qbert_py_movement/qbert_py_movement.egg-info/SOURCES.txt'
+writing manifest file 'build/qbert_py_movement/qbert_py_movement.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build
+creating /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib
+creating /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement
+copying qbert_py_movement/subscriber_member_function.py -> /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement
+copying qbert_py_movement/wanderer.py -> /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement
+copying qbert_py_movement/__init__.py -> /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement
+copying qbert_py_movement/publisher_member_function.py -> /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement
+copying qbert_py_movement/reactor.py -> /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement
+running install
+running install_lib
+creating /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+copying /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement/subscriber_member_function.py -> /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+copying /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement/wanderer.py -> /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+copying /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement/__init__.py -> /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+copying /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement/publisher_member_function.py -> /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+copying /home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/build/lib/qbert_py_movement/reactor.py -> /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/wanderer.py to wanderer.cpython-310.pyc
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/publisher_member_function.py to publisher_member_function.cpython-310.pyc
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/reactor.py to reactor.cpython-310.pyc
+running install_data
+creating /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/share/ament_index
+creating /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/share/ament_index/resource_index
+creating /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/share/ament_index/resource_index/packages
+copying resource/qbert_py_movement -> /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/share/ament_index/resource_index/packages
+copying package.xml -> /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/share/qbert_py_movement
+running install_egg_info
+Copying build/qbert_py_movement/qbert_py_movement.egg-info to /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement-0.0.0-py3.10.egg-info
+running install_scripts
+Installing listener script to /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/qbert_py_movement
+Installing reactor script to /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/qbert_py_movement
+Installing talker script to /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/qbert_py_movement
+Installing wanderer script to /home/johnma/ros2_ws/src/qbert_py_movement/install/qbert_py_movement/lib/qbert_py_movement
+writing list of installed files to '/home/johnma/ros2_ws/src/qbert_py_movement/build/qbert_py_movement/install.log'

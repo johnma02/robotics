@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<robot name="udbot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Base create3 model -->
+  <xacro:include filename="$(find irobot_create_description)/urdf/create3.urdf.xacro" />
+  <xacro:include filename="$(find udbot_description)/urdf/sensors/rplidar.urdf.xacro" />
+  <xacro:include filename="$(find udbot_description)/urdf/sensors/camera_mast.urdf.xacro" />
+  <xacro:include filename="$(find udbot_description)/urdf/sensors/camera_mount.urdf.xacro" />
+  <xacro:include filename="$(find udbot_description)/urdf/sensors/realsense.urdf.xacro" />
+
+  <!-- Mechanical properties -->
+  <xacro:property name="rplidar_x_offset"              value="${0.393584*cm2m}"/>
+  <xacro:property name="rplidar_y_offset"              value="${0*cm2m}"/>
+  <xacro:property name="rplidar_z_offset"              value="${7.529272*cm2m}"/>
+
+  <xacro:property name="camera_mast_x_offset"         value="${-9*cm2m}"/>
+  <xacro:property name="camera_mast_y_offset"         value="${0*cm2m}"/>
+  <xacro:property name="camera_mast_z_offset"         value="${2.914772*cm2m}"/>
+
+  <xacro:property name="camera_mount_z_offset"         value="${37.0*cm2m}"/>
+
+  <xacro:property name="realsense_x_offset"         value="${3.8*cm2m}"/>
+  <xacro:property name="realsense_z_offset"         value="${1.6536*cm2m}"/>
+
+  
+  <!-- UDBot sensor definitions -->
+
+  <xacro:rplidar name="rplidar" parent_link="base_link" gazebo="$(arg gazebo)">
+    <origin xyz="${rplidar_x_offset} ${rplidar_y_offset} ${rplidar_z_offset + base_link_z_offset}"
+            rpy="0 0 ${pi}"/>
+  </xacro:rplidar>
+
+  <xacro:camera_mast name="camera_mast" parent_link="base_link">
+    <origin xyz="${camera_mast_x_offset} ${camera_mast_y_offset} ${camera_mast_z_offset + base_link_z_offset}"/>
+  </xacro:camera_mast>  
+
+  <xacro:camera_mount name="camera_mount" parent_link="base_link">
+    <origin xyz="${camera_mast_x_offset} ${camera_mast_y_offset} ${camera_mount_z_offset + camera_mast_z_offset + base_link_z_offset}"/>
+  </xacro:camera_mount>  
+
+  <xacro:realsense name="realsense" parent_link="base_link">
+    <origin xyz="${realsense_x_offset + camera_mast_x_offset} ${camera_mast_y_offset} ${realsense_z_offset + camera_mount_z_offset + camera_mast_z_offset + base_link_z_offset}"
+	    rpy="${pi/2 + pi/6} 0 ${pi/2}"/>
+  </xacro:realsense>    
+
+</robot>

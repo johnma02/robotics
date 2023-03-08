@@ -1,0 +1,43 @@
+[0.047s] Invoking command in '/home/johnma/ros2_ws/build/irobot_create_ignition_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/johnma/ros2_ws/install/qbert_py_movement:/home/johnma/create3_examples_ws/install/create3_teleop:/home/johnma/create3_examples_ws/install/create3_examples_py:/opt/ros/humble /usr/bin/cmake /home/johnma/ros2_ws/src/create3_sim/irobot_create_ignition/irobot_create_ignition_plugins -DCMAKE_INSTALL_PREFIX=/home/johnma/ros2_ws/install/irobot_create_ignition_plugins
+[0.152s] -- The C compiler identification is GNU 11.3.0
+[0.263s] -- The CXX compiler identification is GNU 11.3.0
+[0.273s] -- Detecting C compiler ABI info
+[0.421s] -- Detecting C compiler ABI info - done
+[0.427s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.427s] -- Detecting C compile features
+[0.429s] -- Detecting C compile features - done
+[0.439s] -- Detecting CXX compiler ABI info
+[0.648s] -- Detecting CXX compiler ABI info - done
+[0.677s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.677s] -- Detecting CXX compile features
+[0.678s] -- Detecting CXX compile features - done
+[0.683s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.100s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[1.322s] [33mCMake Warning at CMakeLists.txt:19 (message):
+[1.322s]   Ignition not found.  Skipping irobot_create_ignition_plugins package.
+[1.322s] 
+[1.322s] [0m
+[1.404s] -- Configuring done
+[1.408s] -- Generating done
+[1.409s] -- Build files have been written to: /home/johnma/ros2_ws/build/irobot_create_ignition_plugins
+[1.418s] Invoked command in '/home/johnma/ros2_ws/build/irobot_create_ignition_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/johnma/ros2_ws/install/qbert_py_movement:/home/johnma/create3_examples_ws/install/create3_teleop:/home/johnma/create3_examples_ws/install/create3_examples_py:/opt/ros/humble /usr/bin/cmake /home/johnma/ros2_ws/src/create3_sim/irobot_create_ignition/irobot_create_ignition_plugins -DCMAKE_INSTALL_PREFIX=/home/johnma/ros2_ws/install/irobot_create_ignition_plugins
+[1.419s] Invoking command in '/home/johnma/ros2_ws/build/irobot_create_ignition_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/johnma/ros2_ws/install/qbert_py_movement:/home/johnma/create3_examples_ws/install/create3_teleop:/home/johnma/create3_examples_ws/install/create3_examples_py:/opt/ros/humble /usr/bin/cmake --build /home/johnma/ros2_ws/build/irobot_create_ignition_plugins -- -j4 -l4
+[1.500s] Invoked command in '/home/johnma/ros2_ws/build/irobot_create_ignition_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/johnma/ros2_ws/install/qbert_py_movement:/home/johnma/create3_examples_ws/install/create3_teleop:/home/johnma/create3_examples_ws/install/create3_examples_py:/opt/ros/humble /usr/bin/cmake --build /home/johnma/ros2_ws/build/irobot_create_ignition_plugins -- -j4 -l4
+[1.580s] Invoking command in '/home/johnma/ros2_ws/build/irobot_create_ignition_plugins': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/johnma/ros2_ws/install/qbert_py_movement:/home/johnma/create3_examples_ws/install/create3_teleop:/home/johnma/create3_examples_ws/install/create3_examples_py:/opt/ros/humble /usr/bin/cmake --install /home/johnma/ros2_ws/build/irobot_create_ignition_plugins
+[1.603s] -- Install configuration: ""
+[1.603s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/ament_index/resource_index/package_run_dependencies/irobot_create_ignition_plugins
+[1.604s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/ament_index/resource_index/parent_prefix_path/irobot_create_ignition_plugins
+[1.604s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/environment/ament_prefix_path.sh
+[1.604s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/environment/ament_prefix_path.dsv
+[1.604s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/environment/path.sh
+[1.604s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/environment/path.dsv
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/local_setup.bash
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/local_setup.sh
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/local_setup.zsh
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/local_setup.dsv
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/package.dsv
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/ament_index/resource_index/packages/irobot_create_ignition_plugins
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/cmake/irobot_create_ignition_pluginsConfig.cmake
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/cmake/irobot_create_ignition_pluginsConfig-version.cmake
+[1.605s] -- Installing: /home/johnma/ros2_ws/install/irobot_create_ignition_plugins/share/irobot_create_ignition_plugins/package.xml
+[1.621s] Invoked command in '/home/johnma/ros2_ws/build/irobot_create_ignition_plugins' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/johnma/ros2_ws/install/qbert_py_movement:/home/johnma/create3_examples_ws/install/create3_teleop:/home/johnma/create3_examples_ws/install/create3_examples_py:/opt/ros/humble /usr/bin/cmake --install /home/johnma/ros2_ws/build/irobot_create_ignition_plugins
