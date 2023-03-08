@@ -51,6 +51,8 @@ class Reactor(Node):
         else:
             forward = Twist()
             forward.linear.x = .15
+            turn_direction = list(functools.reduce(lambda a,b : a if a[1] > b[1] else b, threats))
+            forward.angular.z = .05 if turn_direction[0] > 3 else -.05
             self.ir_publisher.publish(forward)
 
 def main(args=None):
