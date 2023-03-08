@@ -1,0 +1,4 @@
+source;share/udbot_odom2tf/local_setup.bash
+source;share/udbot_odom2tf/local_setup.dsv
+source;share/udbot_odom2tf/local_setup.sh
+source;share/udbot_odom2tf/local_setup.zsh
