@@ -80,7 +80,6 @@ class Laserfollow:
         self.destroy_timer(self.delayer_b)
 
 
-
     def move(self, haz):
         while 1:
             print(self.subscription.ranges)
