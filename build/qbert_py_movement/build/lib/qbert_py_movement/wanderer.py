@@ -91,6 +91,10 @@ class Wanderer(Node):
                 print("backing up")
                 self.delayer_a = self.create_timer(2, self.delayed_turn)
                 self.delayer_b = self.create_timer(7, self.delayed_forward)
+        elif not self.executing:
+            forward = Twist()
+            forward.linear.x = .1
+            self.hazard_publisher.publish(forward)
 
 
 #ros2 topic pub qbert/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
