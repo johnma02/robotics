@@ -1,6 +1,5 @@
 import rclpy
 from rclpy.node import Node
-
 from std_msgs.msg import String
 from irobot_create_msgs.msg import HazardDetectionVector
 from sensor_msgs.msg import LaserScan
@@ -13,7 +12,7 @@ import time
 class Laserfollow:
 
     def __init__(self):
-        super().__init__('laserfollow')
+        super().__init__("laserfollow")
 
         self.hazard_subscription = self.create_subscription(
                 HazardDetectionVector,
@@ -88,7 +87,7 @@ class Laserfollow:
 
 
 
-def main():
+def main(args=None):
     rclpy.init(args=args)
 
     laser = Laserfollow()

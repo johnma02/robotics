@@ -1,0 +1,37 @@
+running egg_info
+creating build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info
+writing build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/PKG-INFO
+writing dependency_links to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/dependency_links.txt
+writing entry points to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/entry_points.txt
+writing requirements to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/requires.txt
+writing top-level names to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/top_level.txt
+writing manifest file 'build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/SOURCES.txt'
+reading manifest file 'build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/SOURCES.txt'
+writing manifest file 'build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build
+creating /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib
+creating /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib/qbert_py_laserfollow
+copying qbert_py_laserfollow/laserfollow.py -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib/qbert_py_laserfollow
+copying qbert_py_laserfollow/__init__.py -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib/qbert_py_laserfollow
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+creating /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow
+copying /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib/qbert_py_laserfollow/laserfollow.py -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow
+copying /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib/qbert_py_laserfollow/__init__.py -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow/laserfollow.py to laserfollow.cpython-310.pyc
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/share/ament_index
+creating /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/share/ament_index/resource_index
+creating /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/share/ament_index/resource_index/packages
+copying resource/qbert_py_laserfollow -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/share/ament_index/resource_index/packages
+copying package.xml -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/share/qbert_py_laserfollow
+running install_egg_info
+Copying build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info to /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow-0.0.0-py3.10.egg-info
+running install_scripts
+Installing talker script to /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/qbert_py_laserfollow
+writing list of installed files to '/home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/install.log'

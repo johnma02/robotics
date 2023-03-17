@@ -19,7 +19,7 @@ setup(
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts': ['talker = qubert_py movement.laserfollow:main'
+        'console_scripts': ['laserfollow = qbert_py_laserfollow.laserfollow:main',
         ],
     },
 )
