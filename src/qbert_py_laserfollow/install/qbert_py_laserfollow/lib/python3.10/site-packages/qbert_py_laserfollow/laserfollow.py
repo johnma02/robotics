@@ -36,9 +36,10 @@ class Laserfollow(Node):
         pass
     
     def laser_callback(self, las):
-        #print(las)
-        print(las.ranges[0])
-        print(las.ranges[-1])
+        readable = {las.ranges[i]: las.intensities[i] for i in range(len(las.ranges))}
+        print(readable)
+        #print(las.ranges[0])
+        #print(las.ranges[-1])
 
 
 
