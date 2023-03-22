@@ -8,6 +8,7 @@ from geometry_msgs.msg import Twist
 from rclpy import qos
 import random
 import time
+import math
 
 class Laserfollow(Node):
 
@@ -36,11 +37,12 @@ class Laserfollow(Node):
         pass
     
     def laser_callback(self, las):
-        readable = {las.ranges[i]: las.intensities[i] for i in range(len(las.ranges))}
-        print(readable)
-        #print(las.ranges[0])
-        #print(las.ranges[-1])
+        ranges = las.ranges
+        left = len(ranges)//4
+        right = (len(ranges))//4*3
+        back = len(ranges)//2
 
+        print(f"front: {ranges[-1]}, left: {ranges[left]}, right: {ranges[right]}, back: {ranges[back]}")
 
 
 

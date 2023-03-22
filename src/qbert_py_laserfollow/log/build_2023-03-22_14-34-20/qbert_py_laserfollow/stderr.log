@@ -1,0 +1,7 @@
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+  File "/home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow/laserfollow.py", line 42
+    print(f"ranges[-1]: {ranges[-1]}, ranges[0]: {ranges[0]}, ranges[5]: {ranges[5], ranges[-5]: {ranges[-5]}")
+                                                                                                              ^
+SyntaxError: f-string: expecting '}'
+
