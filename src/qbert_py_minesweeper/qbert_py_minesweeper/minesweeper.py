@@ -9,6 +9,14 @@ from rclpy import qos
 import random
 import time
 
+# import the necessary packages
+from collections import deque
+from imutils.video import VideoStream
+import numpy as np
+import argparse
+import cv2
+import imutils
+
 class Minesweeper(Node):
 
     def __init__(self):
@@ -76,6 +84,60 @@ class Minesweeper(Node):
         self.executing = False #{delayed_forward} is the last component in our wandering algorithm, so we indicate we are finished executing
         self.forward_timer = self.create_timer(.1, self.forward_callback)
         self.destroy_timer(self.delayer_b)
+
+    def ball_camera(self):
+        ap = argparse.ArgumentParser()
+        ap.add_argument("-v", "--video",
+            help="path to the (optional) video file")
+        ap.add_argument("-b", "--buffer", type=int, default=64,
+            help="max buffer size")
+        args = vars(ap.parse_args())
+
+        greenLower = (29, 86, 6)
+        greenUpper = (149, 234, 244)
+        pts = deque(maxlen=args["buffer"])
+
+        """
+        THIS IS WHERE QBERT VIDEO INPUT GOES
+        """
+        vs = qbert_video_input_stream
+
+        while True:
+            # grab the current frame
+            frame = vs.read()
+            # handle the frame from VideoCapture or VideoStream
+            frame = frame[1] if args.get("video", False) else frame
+            # if we are viewing a video and we did not grab a frame,
+            # then we have reached the end of the video
+            if frame is None:
+                break
+            # resize the frame, blur it, and convert it to the HSV
+            # color space
+            frame = imutils.resize(frame, width=600)
+            blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+            hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+            # construct a mask for the color "green", then perform
+            # a series of dilations and erosions to remove any small
+            # blobs left in the mask
+            mask = cv2.inRange(hsv, greenLower, greenUpper)
+            mask = cv2.erode(mask, None, iterations=2)
+            mask = cv2.dilate(mask, None, iterations=2)
+                # find contours in the mask and initialize the current
+            # (x, y) center of the ball
+            cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+                cv2.CHAIN_APPROX_SIMPLE)
+            cnts = imutils.grab_contours(cnts)
+            center = None
+
+            if len(cnts) > 0:
+                # find the largest contour in the mask, then use
+                # it to compute the minimum enclosing circle and
+                # centroid
+                c = max(cnts, key=cv2.contourArea)
+                ((x, y), radius) = cv2.minEnclosingCircle(c)
+                print((x,y))
+            
+        return 0
 
     def hazard_callback(self, haz):
         if len(haz.detections) > 0:
