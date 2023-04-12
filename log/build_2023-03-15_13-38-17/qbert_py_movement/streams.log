@@ -1,0 +1,52 @@
+[0.549s] Invoking command in '/home/johnma/ros2_ws/src/qbert_py_movement': PYTHONPATH=/home/johnma/ros2_ws/build/qbert_py_movement/prefix_override:/home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/qbert_py_movement build --build-base /home/johnma/ros2_ws/build/qbert_py_movement/build install --record /home/johnma/ros2_ws/build/qbert_py_movement/install.log --single-version-externally-managed
+[0.690s] running egg_info
+[0.691s] creating ../../build/qbert_py_movement/qbert_py_movement.egg-info
+[0.691s] writing ../../build/qbert_py_movement/qbert_py_movement.egg-info/PKG-INFO
+[0.691s] writing dependency_links to ../../build/qbert_py_movement/qbert_py_movement.egg-info/dependency_links.txt
+[0.691s] writing entry points to ../../build/qbert_py_movement/qbert_py_movement.egg-info/entry_points.txt
+[0.691s] writing requirements to ../../build/qbert_py_movement/qbert_py_movement.egg-info/requires.txt
+[0.691s] writing top-level names to ../../build/qbert_py_movement/qbert_py_movement.egg-info/top_level.txt
+[0.691s] writing manifest file '../../build/qbert_py_movement/qbert_py_movement.egg-info/SOURCES.txt'
+[0.692s] reading manifest file '../../build/qbert_py_movement/qbert_py_movement.egg-info/SOURCES.txt'
+[0.693s] writing manifest file '../../build/qbert_py_movement/qbert_py_movement.egg-info/SOURCES.txt'
+[0.693s] running build
+[0.693s] running build_py
+[0.693s] creating /home/johnma/ros2_ws/build/qbert_py_movement/build
+[0.693s] creating /home/johnma/ros2_ws/build/qbert_py_movement/build/lib
+[0.693s] creating /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement
+[0.693s] copying qbert_py_movement/subscriber_member_function.py -> /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement
+[0.694s] copying qbert_py_movement/wanderer.py -> /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement
+[0.694s] copying qbert_py_movement/__init__.py -> /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement
+[0.694s] copying qbert_py_movement/publisher_member_function.py -> /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement
+[0.694s] copying qbert_py_movement/reactor.py -> /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement
+[0.694s] running install
+[0.694s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.694s]   warnings.warn(
+[0.695s] running install_lib
+[0.696s] creating /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+[0.696s] copying /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement/subscriber_member_function.py -> /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+[0.696s] copying /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement/wanderer.py -> /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+[0.696s] copying /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement/__init__.py -> /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+[0.696s] copying /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement/publisher_member_function.py -> /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+[0.696s] copying /home/johnma/ros2_ws/build/qbert_py_movement/build/lib/qbert_py_movement/reactor.py -> /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement
+[0.697s] byte-compiling /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+[0.697s] byte-compiling /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/wanderer.py to wanderer.cpython-310.pyc
+[0.698s] byte-compiling /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/__init__.py to __init__.cpython-310.pyc
+[0.698s] byte-compiling /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/publisher_member_function.py to publisher_member_function.cpython-310.pyc
+[0.698s] byte-compiling /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement/reactor.py to reactor.cpython-310.pyc
+[0.698s] Sorry: IndentationError: unexpected indent (reactor.py, line 31)
+[0.698s] running install_data
+[0.699s] creating /home/johnma/ros2_ws/install/qbert_py_movement/share/ament_index
+[0.699s] creating /home/johnma/ros2_ws/install/qbert_py_movement/share/ament_index/resource_index
+[0.699s] creating /home/johnma/ros2_ws/install/qbert_py_movement/share/ament_index/resource_index/packages
+[0.699s] copying resource/qbert_py_movement -> /home/johnma/ros2_ws/install/qbert_py_movement/share/ament_index/resource_index/packages
+[0.699s] copying package.xml -> /home/johnma/ros2_ws/install/qbert_py_movement/share/qbert_py_movement
+[0.699s] running install_egg_info
+[0.700s] Copying ../../build/qbert_py_movement/qbert_py_movement.egg-info to /home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages/qbert_py_movement-0.0.0-py3.10.egg-info
+[0.700s] running install_scripts
+[0.714s] Installing listener script to /home/johnma/ros2_ws/install/qbert_py_movement/lib/qbert_py_movement
+[0.714s] Installing reactor script to /home/johnma/ros2_ws/install/qbert_py_movement/lib/qbert_py_movement
+[0.714s] Installing talker script to /home/johnma/ros2_ws/install/qbert_py_movement/lib/qbert_py_movement
+[0.714s] Installing wanderer script to /home/johnma/ros2_ws/install/qbert_py_movement/lib/qbert_py_movement
+[0.714s] writing list of installed files to '/home/johnma/ros2_ws/build/qbert_py_movement/install.log'
+[0.748s] Invoked command in '/home/johnma/ros2_ws/src/qbert_py_movement' returned '0': PYTHONPATH=/home/johnma/ros2_ws/build/qbert_py_movement/prefix_override:/home/johnma/ros2_ws/install/qbert_py_movement/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/qbert_py_movement build --build-base /home/johnma/ros2_ws/build/qbert_py_movement/build install --record /home/johnma/ros2_ws/build/qbert_py_movement/install.log --single-version-externally-managed
