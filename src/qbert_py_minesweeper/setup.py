@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'minesweeper = qbert_py_minesweeper.minesweeper:main',
+            'minesweeper = qbert_py_movement.minesweeper:main',
         ],
     },
 )
