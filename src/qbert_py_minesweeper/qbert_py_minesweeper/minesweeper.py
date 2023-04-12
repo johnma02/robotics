@@ -9,10 +9,10 @@ from rclpy import qos
 import random
 import time
 
-class Wanderer(Node):
+class Minesweeper(Node):
 
     def __init__(self):
-        super().__init__('wanderer')
+        super().__init__('minesweeper')
         
         self.hazard_subscription = self.create_subscription(
             HazardDetectionVector,
@@ -101,13 +101,13 @@ class Wanderer(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    wanderer = Wanderer()
+    minesweeper = Minesweeper()
     
-    rclpy.spin(wanderer)
+    rclpy.spin(minesweeper)
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    wanderer.destroy_node()
+    minesweeper.destroy_node()
     rclpy.shutdown()
 
 
