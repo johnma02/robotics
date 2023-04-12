@@ -1,0 +1,26 @@
+[0.364s] Invoking command in '/home/johnma/ros2_ws/src/qbert_py_laserfollow': PYTHONPATH=/home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/prefix_override:/home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/qbert_py_laserfollow build --build-base /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build install --record /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/install.log --single-version-externally-managed
+[0.484s] running egg_info
+[0.484s] writing build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/PKG-INFO
+[0.484s] writing dependency_links to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/dependency_links.txt
+[0.484s] writing entry points to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/entry_points.txt
+[0.484s] writing requirements to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/requires.txt
+[0.484s] writing top-level names to build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/top_level.txt
+[0.485s] reading manifest file 'build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/SOURCES.txt'
+[0.486s] writing manifest file 'build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info/SOURCES.txt'
+[0.486s] running build
+[0.486s] running build_py
+[0.486s] copying qbert_py_laserfollow/laserfollow.py -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib/qbert_py_laserfollow
+[0.487s] running install
+[0.487s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.487s]   warnings.warn(
+[0.487s] running install_lib
+[0.487s] copying /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build/lib/qbert_py_laserfollow/laserfollow.py -> /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow
+[0.488s] byte-compiling /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow/laserfollow.py to laserfollow.cpython-310.pyc
+[0.488s] running install_data
+[0.488s] running install_egg_info
+[0.489s] removing '/home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow-0.0.0-py3.10.egg-info' (and everything under it)
+[0.489s] Copying build/qbert_py_laserfollow/qbert_py_laserfollow.egg-info to /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages/qbert_py_laserfollow-0.0.0-py3.10.egg-info
+[0.490s] running install_scripts
+[0.500s] Installing laserfollow script to /home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/qbert_py_laserfollow
+[0.500s] writing list of installed files to '/home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/install.log'
+[0.515s] Invoked command in '/home/johnma/ros2_ws/src/qbert_py_laserfollow' returned '0': PYTHONPATH=/home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/prefix_override:/home/johnma/ros2_ws/src/qbert_py_laserfollow/install/qbert_py_laserfollow/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/qbert_py_laserfollow build --build-base /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/build install --record /home/johnma/ros2_ws/src/qbert_py_laserfollow/build/qbert_py_laserfollow/install.log --single-version-externally-managed
