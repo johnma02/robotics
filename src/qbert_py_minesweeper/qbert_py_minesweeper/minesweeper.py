@@ -22,6 +22,9 @@ import imutils
 
 class Minesweeper(Node):
 
+    lower = (29, 86, 6)
+    upper = (149, 234, 244)
+
     def __init__(self):
         super().__init__('minesweeper')
         self.video_feed = self.create_subscription(
@@ -42,6 +45,86 @@ class Minesweeper(Node):
         # Display the frame using cv2.imshow
         cv2.imshow('Video Stream', cv_image)
         cv2.waitKey(1)
+
+    def destroy_node(self):
+        # Release the VideoWriter object
+        self.out.release()
+        # Close all windows
+        cv2.destroyAllWindows()
+        super().destroy_node()
+
+    def getBallPosition(self):
+
+        if not cv2:
+            vs = VideoStream(src=0).start()
+        # otherwise, grab a reference to the video file
+        else:
+            vs = cv2.VideoCapture(self.video_feed)
+
+        # grab the current frame
+        frame = vs.read()
+        # handle the frame from VideoCapture or VideoStream
+        frame = frame[1] if cv2 else frame
+        # if we are viewing a video and we did not grab a frame,
+        # then we have reached the end of the video
+        if frame is None:
+            return
+        # resize the frame, blur it, and convert it to the HSV
+        # color space
+        frame = imutils.resize(frame, width=600)
+        blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+        hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+        # construct a mask for the color "green", then perform
+        # a series of dilations and erosions to remove any small
+        # blobs left in the mask
+        mask = cv2.inRange(hsv, Minesweeper.lower, Minesweeper.upper)
+        mask = cv2.erode(mask, None, iterations=2)
+        mask = cv2.dilate(mask, None, iterations=2)
+            # find contours in the mask and initialize the current
+        # (x, y) center of the ball
+        cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+            cv2.CHAIN_APPROX_SIMPLE)
+        cnts = imutils.grab_contours(cnts)
+        center = None
+        # only proceed if at least one contour was found
+        if len(cnts) > 0:
+            # find the largest contour in the mask, then use
+            # it to compute the minimum enclosing circle and
+            # centroid
+            c = max(cnts, key=cv2.contourArea)
+            ((x, y), radius) = cv2.minEnclosingCircle(c)
+            print((x,y))
+            return (x,y)
+        else:
+            return None
+    
+    def getRot(self):
+        try:
+            x, y = Minesweeper.getBallPosition()
+            diff = x-300
+            if diff > 0:
+                return 0.1
+            else:
+                return -0.1
+        except:
+            return 0
+
+    def movement(self):
+        rot = Minesweeper.getRot()
+        self.publisher_ = self.create_publisher(Twist, 'qbert/cmd_vel', 10)
+        move = Twist()
+        move.linear.x = 0.3
+        move.angular.z = rot
+        self.publisher_.publish(move)
+    
+    def run(self):
+        while 1:
+            Minesweeper.movement()
+
+    
+        
+
+
 #ros2 topic pub qbert/cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.1, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
 def main(args=None):
     rclpy.init(args=args)
