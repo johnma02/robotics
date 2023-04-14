@@ -24,6 +24,7 @@ class Minesweeper(Node):
 
     lower = (29, 86, 6)
     upper = (149, 234, 244)
+    
 
     def __init__(self):
         super().__init__('minesweeper')
@@ -33,9 +34,17 @@ class Minesweeper(Node):
             self.video_callback,
             qos.qos_profile_sensor_data)
         
+        self.hazard_subscription = self.create_subscription(
+            HazardDetectionVector,
+            'qbert/hazard_detection',
+            self.hazard_callback,
+            qos.qos_profile_sensor_data)
+        
         self.bridge = CvBridge()
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID') # Specify video codec
         self.out = cv2.VideoWriter('output.avi', self.fourcc, 30.0, (640, 480)) # Create VideoWriter object
+        self.move = Twist()
+        self.publisher = self.createPub(Twist, 'qbert/cmd_vel', 10)
 
     def video_callback(self, msg):
         # Convert ROS2 Image message to cv2 image format
@@ -108,14 +117,29 @@ class Minesweeper(Node):
                 return -0.1
         except:
             return 0
+        
+    def backUp(self):
+        self.move.linear.x = -0.1
+        self.move.angular.z = (random.random() - 0.5) * 2
+        self.publisher.publish(self.move)
+        
+    def hazard_callback(self, haz):
+        if len(haz.detections) > 0:
+            types = [val.type for val in haz.detections] #list comprehension extracts types from list of objects
+            if (1 in types) and not self.executing: #type 1 is collision
+                self.backTimer = self.create_timer(0.5, self.backUp)
+                self.executing = True
+                
 
+
+    def createPub(self, msg_type, topic, qos_profile):
+        return self.create_publisher(msg_type, topic, qos_profile)
+    
     def movement(self):
         rot = Minesweeper.getRot()
-        self.publisher_ = self.create_publisher(Twist, 'qbert/cmd_vel', 10)
-        move = Twist()
-        move.linear.x = 0.3
-        move.angular.z = rot
-        self.publisher_.publish(move)
+        self.move.linear.x = 0.3
+        self.move.angular.z = rot
+        self.publisher.publish(self.move)
     
     def run(self):
         while 1:
