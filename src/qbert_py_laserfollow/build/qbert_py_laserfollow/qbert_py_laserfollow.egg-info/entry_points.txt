@@ -1,3 +1,0 @@
-[console_scripts]
-laserfollow = qbert_py_laserfollow.laserfollow:main
-

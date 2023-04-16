@@ -1,2 +1,7 @@
 ghtoken.txt
+/build
+/log
+src/*/build
+src/*/log
+
 

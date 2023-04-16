@@ -1,9 +1,0 @@
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/uninstall.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/udbot_viz_uninstall.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/test.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/edit_cache.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/rebuild_cache.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/list_install_components.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/install.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/install/local.dir
-/home/johnma/ros2_ws/build/udbot_viz/CMakeFiles/install/strip.dir
