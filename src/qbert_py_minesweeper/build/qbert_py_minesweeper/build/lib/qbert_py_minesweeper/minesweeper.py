@@ -40,6 +40,7 @@ class Minesweeper(Node):
         self.out = cv2.VideoWriter('output.avi', self.fourcc, 30.0, (640, 480)) # Create VideoWriter object
         self.move = Twist()
         self.publisher = self.create_publisher(Twist, 'qbert/cmd_vel', 10)
+        self.last_center = None
 
     def video_callback(self, msg):
         lower = (29, 86, 6)
@@ -50,7 +51,6 @@ class Minesweeper(Node):
         # Write the frame to the video file
         self.out.write(cv_image)
         # Display the frame using cv2.imshow
-        cv2.imshow('Video Stream', cv_image)
         cv2.waitKey(1)
         
         frame = imutils.resize(cv_image, width=600)
@@ -76,7 +76,6 @@ class Minesweeper(Node):
             # centroid
             c = max(cnts, key=cv2.contourArea)
             ((x, y), radius) = cv2.minEnclosingCircle(c)
-            print((x,y))
             M = cv2.moments(c)
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             # only proceed if the radius meets a minimum size
@@ -86,6 +85,7 @@ class Minesweeper(Node):
                 cv2.circle(frame, (int(x), int(y)), int(radius),
                     (0, 255, 255), 2)
                 cv2.circle(frame, center, 5, (0, 0, 255), -1)
+            print(f"center:{center}")
         # update the points queue
         pts.appendleft(center)
             # loop over the set of tracked points
@@ -100,6 +100,19 @@ class Minesweeper(Node):
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
         # show the frame to our screen
         cv2.imshow("Frame", frame)
+        if center:
+            self.last_center = center 
+        self.tracking_callback()
+
+    def tracking_callback(self):
+        tracking_twist = Twist()
+        if self.last_center:
+            if self.last_center.x < 150:
+                tracking_twist.angular.z = -.5
+            elif self.last_center.x > 450:
+                tracking_twist.angular.z = .5
+            else:
+                tracking_twist.linear.x = .3
 
     def hazard_callback(self, haz):
         pass
