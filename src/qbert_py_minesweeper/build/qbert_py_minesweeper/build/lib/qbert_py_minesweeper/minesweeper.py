@@ -41,6 +41,7 @@ class Minesweeper(Node):
         self.move = Twist()
         self.publisher = self.create_publisher(Twist, 'qbert/cmd_vel', 10)
         self.last_center = None
+        self.boomed = 0
 
     def video_callback(self, msg):
         lower = (29, 86, 6)
@@ -107,16 +108,23 @@ class Minesweeper(Node):
     def tracking_callback(self):
         tracking_twist = Twist()
         if self.last_center:
-            if self.last_center.x < 150:
-                tracking_twist.angular.z = -.5
-            elif self.last_center.x > 450:
-                tracking_twist.angular.z = .5
+            if self.last_center[0] < 225:
+                tracking_twist.angular.z = .1
+            elif self.last_center[0] > 375:
+                tracking_twist.angular.z = -.1
             else:
-                tracking_twist.linear.x = .3
+                tracking_twist.linear.x = .075
+            if self.last_center[1] >= 350:
+                self.boomed += 1
+                print("boomed")
+        else:
+            tracking_twist.linear.x = .075
+
+        self.publisher.publish(tracking_twist)
 
     def hazard_callback(self, haz):
         pass
-
+    
     def destroy_node(self):
         # Release the VideoWriter object
         self.out.release()
