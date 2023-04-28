@@ -20,6 +20,8 @@ import argparse
 import cv2
 import imutils
 
+# detector
+
 class Minesweeper(Node):
     def __init__(self):
         super().__init__('minesweeper')
@@ -38,10 +40,28 @@ class Minesweeper(Node):
         self.bridge = CvBridge()
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID') # Specify video codec
         self.out = cv2.VideoWriter('output.avi', self.fourcc, 30.0, (640, 480)) # Create VideoWriter object
-        self.move = Twist()
+
         self.publisher = self.create_publisher(Twist, 'qbert/cmd_vel', 10)
         self.last_center = None
         self.boomed = 0
+        self.booming = False
+
+        self.timer_stopper = None
+        self.forward_timer = None
+
+    def forward_callback(self):
+        forward = Twist()
+        forward.linear.x = .1
+        self.publisher.publish(forward)
+
+    def destroy_forward(self):
+        self.destroy_timer(self.forward_timer)
+        self.destroy_timer(self.timer_stopper)
+        self.booming = False
+        self.boomed += 1
+        print("boomed")
+        self.last_center = None
+        self.publisher.publish(Twist())
 
     def video_callback(self, msg):
         lower = (29, 86, 6)
@@ -80,7 +100,7 @@ class Minesweeper(Node):
             M = cv2.moments(c)
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             # only proceed if the radius meets a minimum size
-            if radius > 10:
+            if radius > 12:
                 # draw the circle and centroid on the frame,
                 # then update the list of tracked points
                 cv2.circle(frame, (int(x), int(y)), int(radius),
@@ -100,14 +120,34 @@ class Minesweeper(Node):
             thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
         # show the frame to our screen
+
         cv2.imshow("Frame", frame)
+        self.tracking_callback()
+        """
+        lower_red = (0, 0, 255)
+        upper_red = (30, 30, 255)
+        # Threshold the image to get only red pixels
+        mask = cv2.inRange(cv_image, lower_red, upper_red)
+        # Find contours of red pixels
+        contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        # Check if red tape contours exist
+        if len(contours) > 0:
+            print("Red line found!")
+        # Draw bounding boxes around red tape contours
+        for contour in contours:
+            x, y, w, h = cv2.boundingRect(contour)
+            cv2.rectangle(bridge, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            print(x, y)
+        # Display the image with bounding boxes
+        cv2.waitKey(1)
+        cv2.imshow("Frame", frame)
+        """
         if center:
             self.last_center = center 
-        self.tracking_callback()
 
     def tracking_callback(self):
         tracking_twist = Twist()
-        if self.last_center:
+        if self.last_center and not self.booming:
             if self.last_center[0] < 225:
                 tracking_twist.angular.z = .1
             elif self.last_center[0] > 375:
@@ -115,18 +155,16 @@ class Minesweeper(Node):
             else:
                 tracking_twist.linear.x = .075
             if self.last_center[1] >= 350:
-                self.boomed += 1
-                print("boomed")
-                tracking_twist.angular.z = 0
-                tracking_twist.linear.x = 0
-        else:
-            tracking_twist.linear.x = .075
-        
+                self.booming = True
+                self.forward_timer = self.create_timer(.1, self.forward_callback)
+                self.timer_stopper = self.create_timer(3, self.destroy_forward)
+                print("booming")
+        if not self.last_center:
+            tracking_twist.angular.z = 0.1
         if self.boomed > 5:
-            tracking_twist.angular.z = 0
-            tracking_twist.linear.x = 0
-            go_home()
-
+            tracking_twist.angular.z = 0.0
+            tracking_twist.linear.x = 0.0
+#            go_home()
         self.publisher.publish(tracking_twist)
 
     def hazard_callback(self, haz):
@@ -146,7 +184,7 @@ class RedTapeDetector(Node):
         self.subscription = self.create_subscription(
             Image,
             'camera/color/image_raw',
-            self.video_callback,
+            self.image_callback,
             qos.qos_profile_sensor_data)
         self.subscription
 
@@ -166,6 +204,7 @@ class RedTapeDetector(Node):
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(bridge, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            print(x, y)
         # Display the image with bounding boxes
         cv2.imshow("Red tape detection", bridge)
         cv2.waitKey(1)
@@ -197,16 +236,16 @@ class RedTapeDetector(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    # minesweeper = Minesweeper()
+    minesweeper = Minesweeper()
     
-    # rclpy.spin(minesweeper)
+    rclpy.spin(minesweeper)
     # # Destroy the node explicitly
     # # (optional - otherwise it will be done automatically
     # # when the garbage collector destroys the node object)
     # minesweeper.destroy_node()
 
-    tape = RedTapeDetector()
-    rclpy.spin(tape)
+   # tape = RedTapeDetector()
+   # rclpy.spin(tape)
 
     rclpy.shutdown()
 
