@@ -145,6 +145,14 @@ class Minesweeper(Node):
         if center:
             self.last_center = center 
 
+    def image_callback(self, msg):
+        cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='passthrough')
+        # perform AprilTag detection here using cv_image
+        # and create AprilTagDetectionArray message
+        tag_detection_msg = AprilTagDetectionArray()
+        # set tag_detection_msg values
+        self.publisher.publish(tag_detection_msg)
+
     def tracking_callback(self):
         tracking_twist = Twist()
         if self.last_center and not self.booming:
