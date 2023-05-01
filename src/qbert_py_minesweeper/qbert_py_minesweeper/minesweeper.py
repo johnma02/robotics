@@ -3,6 +3,7 @@ from rclpy.node import Node
 
 from std_msgs.msg import String
 from irobot_create_msgs.msg import HazardDetectionVector
+from apriltag_msgs.msg import AprilTagDetectionArray 
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 
@@ -36,18 +37,25 @@ class Minesweeper(Node):
             'qbert/hazard_detection',
             self.hazard_callback,
             qos.qos_profile_sensor_data)
+
+        self.april_subscription = self.create_subscription(
+            AprilTagDetectionArray, 
+            '/detections',
+            self.april_callback,
+            qos.qos_profile_sensor_data)
         
         self.bridge = CvBridge()
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID') # Specify video codec
         self.out = cv2.VideoWriter('output.avi', self.fourcc, 30.0, (640, 480)) # Create VideoWriter object
 
-        self.publisher = self.create_publisher(Twist, 'qbert/cmd_vel', 10)
-        self.last_center = None
-        self.boomed = 0
+        self.boomed = 5
         self.booming = False
 
         self.timer_stopper = None
         self.forward_timer = None
+
+        self.heading_home = False
+        self.last_center = None
 
     def forward_callback(self):
         forward = Twist()
@@ -64,7 +72,7 @@ class Minesweeper(Node):
         self.publisher.publish(Twist())
 
     def video_callback(self, msg):
-        lower = (29, 86, 6)
+        lower = (29, 100, 6)
         upper = (64, 255, 255)
         pts = deque()
         # Convert ROS2 Image message to cv2 image format
@@ -73,7 +81,8 @@ class Minesweeper(Node):
         self.out.write(cv_image)
         # Display the frame using cv2.imshow
         cv2.waitKey(1)
-        
+
+
         frame = imutils.resize(cv_image, width=600)
         blurred = cv2.GaussianBlur(frame, (11, 11), 0)
         hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
@@ -120,64 +129,67 @@ class Minesweeper(Node):
             thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
         # show the frame to our screen
-
         cv2.imshow("Frame", frame)
-        self.tracking_callback()
-        """
-        lower_red = (0, 0, 255)
-        upper_red = (30, 30, 255)
-        # Threshold the image to get only red pixels
-        mask = cv2.inRange(cv_image, lower_red, upper_red)
-        # Find contours of red pixels
-        contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        # Check if red tape contours exist
-        if len(contours) > 0:
-            print("Red line found!")
-        # Draw bounding boxes around red tape contours
-        for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-            cv2.rectangle(bridge, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            print(x, y)
-        # Display the image with bounding boxes
-        cv2.waitKey(1)
-        cv2.imshow("Frame", frame)
-        """
-        if center:
-            self.last_center = center 
-
-    def image_callback(self, msg):
-        cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='passthrough')
-        # perform AprilTag detection here using cv_image
-        # and create AprilTagDetectionArray message
-        tag_detection_msg = AprilTagDetectionArray()
-        # set tag_detection_msg values
-        self.publisher.publish(tag_detection_msg)
+        if not self.heading_home:
+            if center:
+                self.last_center = center 
+            self.tracking_callback()
 
     def tracking_callback(self):
         tracking_twist = Twist()
-        if self.last_center and not self.booming:
-            if self.last_center[0] < 225:
-                tracking_twist.angular.z = .1
-            elif self.last_center[0] > 375:
-                tracking_twist.angular.z = -.1
+        if not self.heading_home:
+            if self.last_center:
+                if self.last_center[0] < 225:
+                    tracking_twist.angular.z = .1
+                elif self.last_center[0] > 375:
+                    tracking_twist.angular.z = -.1
+                else:
+                    tracking_twist.linear.x = .075
+                if self.last_center[1] >= 350:
+                    if not self.booming:
+                        self.forward_timer = self.create_timer(.1, self.forward_callback)
+                        self.timer_stopper = self.create_timer(3, self.destroy_forward)
+                        self.booming = True
+                        print("booming")
             else:
-                tracking_twist.linear.x = .075
-            if self.last_center[1] >= 350:
-                self.booming = True
-                self.forward_timer = self.create_timer(.1, self.forward_callback)
-                self.timer_stopper = self.create_timer(3, self.destroy_forward)
-                print("booming")
+                tracking_twist.angular.z = 0.1
+            if self.boomed >= 4:
+                self.heading_home = True
+                self.last_center = None
+        else:
+            if self.last_center:
+                if self.last_center[0] < 175:
+                    tracking_twist.angular.z = .1
+                elif self.last_center[0] > 250:
+                    tracking_twist.angular.z = -.1
+                else:
+                    tracking_twist.linear.x = .075
+                if self.last_center[1] >= 350:
+                    if not self.booming:
+                        self.forward_timer = self.create_timer(.1, self.forward_callback)
+                        self.timer_stopper = self.create_timer(3, self.destroy_forward)
+                        self.booming = True
+                        print("booming")
         if not self.last_center:
-            tracking_twist.angular.z = 0.1
-        if self.boomed > 5:
-            tracking_twist.angular.z = 0.0
-            tracking_twist.linear.x = 0.0
-#            go_home()
+            tracking_twist.angular.z = 0.005
+
         self.publisher.publish(tracking_twist)
 
+    def april_callback(self, detections):
+        if self.heading_home:
+            if(detections.detections):
+                if(detections.detections[0].id == 8):
+                    x = detections.detections[0].centre.x
+                    y = detections.detections[0].centre.y
+                    self.last_center = [x, y]
+                    print(f"here: {self.last_center}")
+                elif self.heading_home:
+                    self.last_center = None
+            self.tracking_callback()
+            
     def hazard_callback(self, haz):
         pass
-    
+
     def destroy_node(self):
         # Release the VideoWriter object
         self.out.release()
@@ -185,75 +197,13 @@ class Minesweeper(Node):
         cv2.destroyAllWindows()
         super().destroy_node()
 
-
-class RedTapeDetector(Node):
-    def __init__(self):
-        super().__init__('red_tape_detector')
-        self.subscription = self.create_subscription(
-            Image,
-            'camera/color/image_raw',
-            self.image_callback,
-            qos.qos_profile_sensor_data)
-        self.subscription
-
-    def image_callback(self, msg):
-        bridge = CvBridge().imgmsg_to_cv2(msg, desired_encoding='bgr8')
-        # Define the range of red color in BGR
-        lower_red = (0, 0, 255)
-        upper_red = (30, 30, 255)
-        # Threshold the image to get only red pixels
-        mask = cv2.inRange(bridge, lower_red, upper_red)
-        # Find contours of red pixels
-        contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        # Check if red tape contours exist
-        if len(contours) > 0:
-            print("Red line found!")
-        # Draw bounding boxes around red tape contours
-        for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-            cv2.rectangle(bridge, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            print(x, y)
-        # Display the image with bounding boxes
-        cv2.imshow("Red tape detection", bridge)
-        cv2.waitKey(1)
-
-    # def go_home():
-    #     move = Twist()
-    #     # Find april tag
-    #     # Move to april tag
-    #     bridge = CvBridge()
-    #     lower_red = (0, 0, 255)
-    #     upper_red = (30, 30, 255)
-    #         # Find red line
-    #     mask = cv2.inRange(bridge, lower_red, upper_red)
-    #     contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    #     if len(contours) > 0:
-    #         # Allign with red line
-    #         x, y, w, h = cv2.boundingRect(contours[0])
-    #         cv2.rectangle(bridge, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    #         # Move forward
-        
-    #     while 
-                
-    #         # Face April tag
-    #     # Bump into april tag
-    #     # Move back
-    #     # Go home
-    #     return
-
 def main(args=None):
     rclpy.init(args=args)
 
     minesweeper = Minesweeper()
     
     rclpy.spin(minesweeper)
-    # # Destroy the node explicitly
-    # # (optional - otherwise it will be done automatically
-    # # when the garbage collector destroys the node object)
-    # minesweeper.destroy_node()
-
-   # tape = RedTapeDetector()
-   # rclpy.spin(tape)
+    minesweeper.destroy_node()
 
     rclpy.shutdown()
 
