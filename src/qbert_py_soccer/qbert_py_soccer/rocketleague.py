@@ -263,8 +263,19 @@ class RL(Node):
     # def score_count():
     #     pass
 
-    # def robot_position():
-    #     pass
+    # robot position
+    def laser_callback(self, las):
+        ranges = las.ranges
+        for i in range(len(ranges)):
+            if ranges[i] < 0.2:
+                move_right = Twist()
+                move_right.angular.z = -0.1
+                self.cmd_vel_pub.publish(move_right)
+            try:
+                if abs(ranges[i] - ranges[i-1]) > 0.1:
+                    pass
+            except:
+                pass
 
     # def score():
     #     pass 
