@@ -1,0 +1,6 @@
+source;share/qbert_py_minesweeper/hook/pythonpath.ps1
+source;share/qbert_py_minesweeper/hook/pythonpath.dsv
+source;share/qbert_py_minesweeper/hook/pythonpath.sh
+source;share/qbert_py_minesweeper/hook/ament_prefix_path.ps1
+source;share/qbert_py_minesweeper/hook/ament_prefix_path.dsv
+source;share/qbert_py_minesweeper/hook/ament_prefix_path.sh
