@@ -74,6 +74,10 @@ class RL(Node):
     def video_callback(self, msg):
         lower = (29, 100, 6)
         upper = (64, 255, 255)
+
+        robot_lower = (0, 0, 0)
+        robot_upper = (65, 65, 65)
+
         pts = deque()
         # Convert ROS2 Image message to cv2 image format
         cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
@@ -128,6 +132,59 @@ class RL(Node):
             # draw the connecting lines
             thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
+
+    ############################################### ROBOT DETECTION ###############################################
+        # construct a mask for the color "black", then perform
+        # a series of dilations and erosions to remove any small
+        # blobs left in the mask
+        mask2 = cv2.inRange(hsv, robot_lower, robot_upper)
+        mask2 = cv2.erode(mask2, None, iterations=2)
+        mask2 = cv2.dilate(mask2, None, iterations=2)
+        # find contours in the mask and initialize the current
+        # (x, y) center of the ball
+        cv2.imshow("Black_Mask", mask2)
+        cnts2 = cv2.findContours(mask2.copy(), cv2.RETR_EXTERNAL,
+            cv2.CHAIN_APPROX_SIMPLE)
+        cnts2 = imutils.grab_contours(cnts2)
+        center = None
+        # only proceed if at least one contour was found
+        if len(cnts2) > 0:
+            # find the largest contour in the mask, then use
+            # it to compute the minimum enclosing circle and
+            # centroid
+            c = max(cnts2, key=cv2.contourArea)
+            ((x, y), radius) = cv2.minEnclosingCircle(c)
+            M = cv2.moments(c)
+            center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
+            # only proceed if the radius meets a minimum size
+            if radius > 12:
+                # draw the circle and centroid on the frame,
+                # then update the list of tracked points
+                cv2.circle(frame, (int(x), int(y)), int(radius),
+                    (0, 255, 255), 2)
+                cv2.circle(frame, center, 5, (0, 0, 255), -1)
+            print(f"center:{center}")
+        # update the points queue
+        pts.appendleft(center)
+            # loop over the set of tracked points
+        for i in range(1, len(pts)):
+            # if either of the tracked points are None, ignore
+            # them
+            if pts[i - 1] is None or pts[i] is None:
+                continue
+            # otherwise, compute the thickness of the line and
+            # draw the connecting lines
+            thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
+            cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
+        
+            # if the back detection is close to the robot; stop for 3 seconds
+            if pts[i-1][1] > 200: # 200 is a place holder value for the y coordinate. update when testing 
+                stop = Twist()
+                stop.linear.x = 0
+                stop.angular.z = 0
+                self.cmd_vel_pub.publish(stop)
+                time.sleep(3)
+
         # show the frame to our screen
         cv2.imshow("Frame", frame)
         if not self.heading_home:
