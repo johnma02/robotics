@@ -200,61 +200,17 @@ class RL(Node):
         cv2.destroyAllWindows()
         super().destroy_node()
 
+    # def mapping():
+    #     pass
 
-class RedTapeDetector(Node):
-    def __init__(self):
-        super().__init__('red_tape_detector')
-        self.subscription = self.create_subscription(
-            Image,
-            'camera/color/image_raw',
-            self.image_callback,
-            qos.qos_profile_sensor_data)
-        self.subscription
+    # def score_count():
+    #     pass
 
-    def image_callback(self, msg):
-        bridge = CvBridge().imgmsg_to_cv2(msg, desired_encoding='bgr8')
-        # Define the range of red color in BGR
-        lower_red = (0, 0, 255)
-        upper_red = (30, 30, 255)
-        # Threshold the image to get only red pixels
-        mask = cv2.inRange(bridge, lower_red, upper_red)
-        # Find contours of red pixels
-        contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        # Check if red tape contours exist
-        if len(contours) > 0:
-            print("Red line found!")
-        # Draw bounding boxes around red tape contours
-        for contour in contours:
-            x, y, w, h = cv2.boundingRect(contour)
-            cv2.rectangle(bridge, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            print(x, y)
-        # Display the image with bounding boxes
-        cv2.imshow("Red tape detection", bridge)
-        cv2.waitKey(1)
+    # def robot_position():
+    #     pass
 
-    # def go_home():
-    #     move = Twist()
-    #     # Find april tag
-    #     # Move to april tag
-    #     bridge = CvBridge()
-    #     lower_red = (0, 0, 255)
-    #     upper_red = (30, 30, 255)
-    #         # Find red line
-    #     mask = cv2.inRange(bridge, lower_red, upper_red)
-    #     contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    #     if len(contours) > 0:
-    #         # Allign with red line
-    #         x, y, w, h = cv2.boundingRect(contours[0])
-    #         cv2.rectangle(bridge, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    #         # Move forward
-        
-    #     while 
-                
-    #         # Face April tag
-    #     # Bump into april tag
-    #     # Move back
-    #     # Go home
-    #     return
+    # def score():
+    #     pass 
 
 def main(args=None):
     rclpy.init(args=args)
