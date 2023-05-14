@@ -134,10 +134,13 @@ class RL(Node):
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
 
     ############################################### ROBOT DETECTION ###############################################
+        frame2 = imutils.resize(cv_image, width=600)
+        blurred2 = cv2.GaussianBlur(frame2, (11, 11), 0)
+        hsv2 = cv2.cvtColor(blurred2, cv2.COLOR_BGR2HSV)
         # construct a mask for the color "black", then perform
         # a series of dilations and erosions to remove any small
         # blobs left in the mask
-        mask2 = cv2.inRange(hsv, robot_lower, robot_upper)
+        mask2 = cv2.inRange(hsv2, robot_lower, robot_upper)
         mask2 = cv2.erode(mask2, None, iterations=2)
         mask2 = cv2.dilate(mask2, None, iterations=2)
         # find contours in the mask and initialize the current
@@ -186,7 +189,7 @@ class RL(Node):
                 time.sleep(3)
 
         # show the frame to our screen
-        cv2.imshow("Frame", frame)
+        cv2.imshow("Frame", frame2)
         if not self.heading_home:
             if center:
                 self.last_center = center 
