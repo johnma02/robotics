@@ -56,6 +56,7 @@ class Minesweeper(Node):
 
         self.heading_home = False
         self.last_center = None
+        self.publisher = self.create_publisher(Twist, "qbert/cmd_vel",10)
 
     def forward_callback(self):
         forward = Twist()

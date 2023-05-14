@@ -30,6 +30,7 @@ _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/udbot/in
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/qbert_py_laserfollow/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/apriltag_msgs/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/apriltag_ros/install\local_setup.ps1"
+_colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/qbert_py_soccer/install\local_setup.ps1"
 
 # source this prefix
 $env:COLCON_CURRENT_PREFIX=(Split-Path $PSCommandPath -Parent)

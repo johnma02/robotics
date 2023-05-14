@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'qbert_py_minesweeper'
+package_name = 'qbert_py_soccer'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'minesweeper = qbert_py_minesweeper.minesweeper:main',
+            'rocketleague = qbert_py_soccer.rocketleague:main',
         ],
     },
 )

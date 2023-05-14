@@ -28,6 +28,7 @@ _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/install\loca
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/create3_sim/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/udbot/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/qbert_py_laserfollow/install\local_setup.ps1"
+_colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/qbert_py_minesweeper/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/apriltag_msgs/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/johnma/ros2_ws/src/apriltag_ros/install\local_setup.ps1"
 
