@@ -74,6 +74,12 @@ class RocketLeague(Node):
         self.publisher.publish(Twist())
 
     def video_callback(self, msg):
+        ap = argparse.ArgumentParser()
+        ap.add_argument("-v", "--video",
+        help="path to the (optional) video file")
+        ap.add_argument("-b", "--buffer", type=int, default=16,
+        help="max buffer size")
+        args = vars(ap.parse_args())
         lower = (29, 100, 6)
         upper = (64, 255, 255)
 
@@ -135,7 +141,6 @@ class RocketLeague(Node):
             thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
 
-    ############################################### ROBOT DETECTION ###############################################
         frame2 = imutils.resize(cv_image, width=600)
         blurred2 = cv2.GaussianBlur(frame2, (11, 11), 0)
         hsv2 = cv2.cvtColor(blurred2, cv2.COLOR_BGR2HSV)
@@ -184,11 +189,11 @@ class RocketLeague(Node):
         
             # if the back detection is close to the robot; stop for 3 seconds
             if pts[i-1][1] > 400: # 200 is a place holder value for the y coordinate. update when testing 
+                print("here")
                 stop = Twist()
-                stop.linear.x = 0
-                stop.angular.z = 0
-                self.cmd_vel_pub.publish(stop)
-                time.sleep(3)
+                stop.linear.x = 0.0
+                stop.angular.z = 0.0
+                self.publisher.publish(stop)
 
         # show the frame to our screen
         cv2.imshow("Frame", frame2)

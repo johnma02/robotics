@@ -128,6 +128,8 @@ class Minesweeper(Node):
             # otherwise, compute the thickness of the line and
             # draw the connecting lines
             thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
+            print(thickness)
+            print(np.sqrt(args["buffer"]))
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
         # show the frame to our screen
         cv2.imshow("Frame", frame)
@@ -153,6 +155,7 @@ class Minesweeper(Node):
                         self.booming = True
                         print("booming")
             else:
+
                 tracking_twist.angular.z = 0.1
             if self.boomed >= 4:
                 self.heading_home = True
