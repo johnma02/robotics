@@ -1,0 +1,27 @@
+running egg_info
+writing build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/PKG-INFO
+writing dependency_links to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/dependency_links.txt
+writing entry points to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/entry_points.txt
+writing requirements to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/requires.txt
+writing top-level names to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/top_level.txt
+reading manifest file 'build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/SOURCES.txt'
+writing manifest file 'build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/SOURCES.txt'
+running build
+running build_py
+copying qbert_py_minesweeper/ball_tracker.py -> /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/build/lib/qbert_py_minesweeper
+copying qbert_py_minesweeper/minesweeper.py -> /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/build/lib/qbert_py_minesweeper
+running install
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running install_lib
+copying /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/build/lib/qbert_py_minesweeper/ball_tracker.py -> /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper
+copying /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/build/lib/qbert_py_minesweeper/minesweeper.py -> /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper/ball_tracker.py to ball_tracker.cpython-310.pyc
+byte-compiling /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper/minesweeper.py to minesweeper.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper-0.0.0-py3.10.egg-info' (and everything under it)
+Copying build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info to /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper-0.0.0-py3.10.egg-info
+running install_scripts
+Installing minesweeper script to /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/qbert_py_minesweeper
+writing list of installed files to '/home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/install.log'

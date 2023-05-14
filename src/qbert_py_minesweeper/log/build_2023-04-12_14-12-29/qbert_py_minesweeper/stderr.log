@@ -1,0 +1,7 @@
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+  File "/home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper/minesweeper.py", line 100
+    vs = /camera/color/image_raw
+         ^
+SyntaxError: invalid syntax
+

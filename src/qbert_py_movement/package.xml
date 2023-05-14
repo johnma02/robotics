@@ -3,7 +3,7 @@
 <package format="3">
   <name>qbert_py_movement</name>
   <version>0.0.0</version>
-  <description>CISC367: Homework 2</description>
+  <description>CISC367: Homework 5</description>
   <maintainer email="ma.jonathan02@gmail.com">johnma</maintainer>
   <license>Apache License 2.0</license>
 
@@ -14,6 +14,7 @@
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>irobot_create_msgs</exec_depend>
+  <exec_depend>apriltag_msgs</exec_depend>
   <export>
     <build_type>ament_python</build_type>
   </export>

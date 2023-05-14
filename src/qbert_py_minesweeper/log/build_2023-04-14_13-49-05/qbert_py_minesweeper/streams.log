@@ -1,0 +1,24 @@
+[0.516s] Invoking command in '/home/johnma/ros2_ws/src/qbert_py_minesweeper': PYTHONPATH=/home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/prefix_override:/home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/qbert_py_minesweeper build --build-base /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/build install --record /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/install.log --single-version-externally-managed
+[0.714s] running egg_info
+[0.715s] writing build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/PKG-INFO
+[0.715s] writing dependency_links to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/dependency_links.txt
+[0.716s] writing entry points to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/entry_points.txt
+[0.716s] writing requirements to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/requires.txt
+[0.716s] writing top-level names to build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/top_level.txt
+[0.717s] reading manifest file 'build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/SOURCES.txt'
+[0.718s] writing manifest file 'build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info/SOURCES.txt'
+[0.718s] running build
+[0.718s] running build_py
+[0.719s] running install
+[0.720s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.720s]   warnings.warn(
+[0.720s] running install_lib
+[0.721s] running install_data
+[0.721s] copying package.xml -> /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/share/qbert_py_minesweeper
+[0.721s] running install_egg_info
+[0.723s] removing '/home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper-0.0.0-py3.10.egg-info' (and everything under it)
+[0.723s] Copying build/qbert_py_minesweeper/qbert_py_minesweeper.egg-info to /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages/qbert_py_minesweeper-0.0.0-py3.10.egg-info
+[0.724s] running install_scripts
+[0.742s] Installing minesweeper script to /home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/qbert_py_minesweeper
+[0.742s] writing list of installed files to '/home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/install.log'
+[0.761s] Invoked command in '/home/johnma/ros2_ws/src/qbert_py_minesweeper' returned '0': PYTHONPATH=/home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/prefix_override:/home/johnma/ros2_ws/src/qbert_py_minesweeper/install/qbert_py_minesweeper/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base build/qbert_py_minesweeper build --build-base /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/build install --record /home/johnma/ros2_ws/src/qbert_py_minesweeper/build/qbert_py_minesweeper/install.log --single-version-externally-managed

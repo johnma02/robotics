@@ -1,4 +1,0 @@
-[33mCMake Warning at CMakeLists.txt:23 (message):
-  Gazebo not found.  Skipping irobot_create_gazebo_plugins package.
-
-[0m
