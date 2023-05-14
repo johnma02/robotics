@@ -48,7 +48,7 @@ class Minesweeper(Node):
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID') # Specify video codec
         self.out = cv2.VideoWriter('output.avi', self.fourcc, 30.0, (640, 480)) # Create VideoWriter object
 
-        self.boomed = 5
+        self.boomed = 0
         self.booming = False
 
         self.timer_stopper = None
