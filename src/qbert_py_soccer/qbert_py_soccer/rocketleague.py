@@ -181,7 +181,7 @@ class RL(Node):
             cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
         
             # if the back detection is close to the robot; stop for 3 seconds
-            if pts[i-1][1] > 200: # 200 is a place holder value for the y coordinate. update when testing 
+            if pts[i-1][1] > 400: # 200 is a place holder value for the y coordinate. update when testing 
                 stop = Twist()
                 stop.linear.x = 0
                 stop.angular.z = 0
