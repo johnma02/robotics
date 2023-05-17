@@ -51,10 +51,14 @@ class RocketLeague(Node):
         self.timer_stopper = None
         self.forward_timer = None
 
-        self.setting_up = True
+        self.setting_up = False
+        self.setup_done = False
 
         self.last_center = None
         self.publisher = self.create_publisher(Twist, "qbert/cmd_vel",10)
+
+        self.start_x = None
+        self.start_y = None
 
 
     def forward_callback(self):
@@ -65,13 +69,22 @@ class RocketLeague(Node):
     def turn_callback(self):
         tt = Twist() # tracking twist
 
+    def setup(self):
+
+
+
     def tracking_callback(self):
-        if(self.setting_up):
-            return
-        tt = Twist() # tracking twist
+        if not self.setting_up:
+            self.setting_up = True
+            setup()
+        elif setup_done:
+            pass
+        else:
+            pass
 
     def receive_odometry(self, odom):
-        print(odom[orientation])
+        position = odom.pose.pose.position
+        
 
     def april_callback(self, detections):
         if self.heading_home:
