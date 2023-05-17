@@ -167,8 +167,25 @@ class Minesweeper(Node):
                 elif self.last_center[0] > 250:
                     tracking_twist.angular.z = -.1
                 else:
-                    tracking_twist.linear.x = .075
-                if self.last_center[1] >= 350:
+                    #DRIBBLE HERE
+
+                    # if ball is in front of robot
+                    if self.last_center[0] > 275 and self.last_center[0] < 325:
+                        tracking_twist.linear.x = .075
+                    # if ball is left of robot
+                    if self.last_center[0] < 275:
+                        # twist -0.1
+                        # move forward
+                        tracking_twist.angular.z = -.1
+                        tracking_twist.linear.x = .075
+                    # if ball is right of robot
+                    if self.last_center[0] > 325:
+                        # twist 0.1
+                        # move forward
+                        tracking_twist.angular.z = .1
+                        
+
+                if self.last_center[1] >= 425:
                     if not self.booming:
                         self.forward_timer = self.create_timer(.1, self.forward_callback)
                         self.timer_stopper = self.create_timer(3, self.destroy_forward)
